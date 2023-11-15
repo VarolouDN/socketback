@@ -6,9 +6,10 @@ const app=express();
 const server = http.createServer(app);
 const io = socketIo(server);
 const corsParams={
-    origin: 'https://socketfront.vercel.app',
-    methods: ['GET', 'POST'],
+    origin: '*',
+    methods: ['GET', 'POST','OPTIONS'],
     allowedHeaders: ['Content-Type'],
+    withCredentials:true
 }
     /*const io = require('socket.io')({
     cors: {
