@@ -5,14 +5,19 @@ const express=require('express');
 const app=express();
 const server = http.createServer(app);
 const io = socketIo(server);
-/*const io = require('socket.io')({
+const corsParams={
+    origin: 'https://socketfront.vercel.app',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+}
+    /*const io = require('socket.io')({
     cors: {
         origin: 'https://socketfront.vercel.app',
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type'],
     },
 });*/
-app.use(cors())
+app.use(cors(corsParams))
 /*app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://socketfront.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
