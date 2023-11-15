@@ -4,15 +4,15 @@ const http=require('http')
 const express=require('express');
 const app=express();
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://socketfront.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
 });
-const server = http.createServer(app);
-app.use(cors())
-const io = socketIo(server, {
+//const server = http.createServer(app);
+//app.use(cors())
+const io = socketIo(app, {
     path: '/socket.io',
 });
 /*const corsParams={
@@ -52,6 +52,6 @@ io.on("connection",socket=>{
 
 })
 
-server.listen(PORT,()=>{
+app.listen(PORT,()=>{
     console.log(`Server is working on port:${5000}`)
 })
