@@ -1,7 +1,7 @@
 //const cors=require('cors')
 const io = require('socket.io')({
     cors: {
-        origin: 'http://localhost:5500',
+        origin: '*',
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type'],
     },
