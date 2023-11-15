@@ -11,6 +11,7 @@ app.use((req, res, next) => {
     next();
 });
 const server = http.createServer(app);
+app.use(cors())
 const io = socketIo(server, {
     path: '/socket.io',
 });
@@ -27,7 +28,7 @@ const io = socketIo(server, {
         allowedHeaders: ['Content-Type'],
     },
 });*/
-//app.use(cors(corsParams))
+
 
 const PORT=5000
 const users={}
