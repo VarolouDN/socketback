@@ -1,13 +1,25 @@
 //const cors=require('cors')
-const io = require('socket.io')({
+const socketIo=require('socket.io')
+
+const express=require('express')
+const app=express()
+
+const io = socketIo(app);
+/*const io = require('socket.io')({
     cors: {
         origin: 'https://socketfront.vercel.app',
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type'],
     },
+});*/
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://socketfront.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
 });
-
-io.listen(5000);
+const PORT=5000
 const users={}
 
 io.on("connection",socket=>{
@@ -27,4 +39,8 @@ io.on("connection",socket=>{
         delete users[socket.id]
     })
 
+})
+
+app.listen(PORT,()=>{
+    console.log(`Server is working on port:${5000}`)
 })
