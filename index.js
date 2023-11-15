@@ -11,7 +11,9 @@ app.use((req, res, next) => {
     next();
 });
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+    path: '/socket.io',
+});
 /*const corsParams={
     origin: '*',
     methods: ['GET', 'POST','OPTIONS'],
@@ -31,7 +33,7 @@ const PORT=5000
 const users={}
 
 io.on("connection",socket=>{
-     console.log("new User")
+
    // socket.emit("chat-message","Hi There")
     socket.on('new-user',name=>{
        users[socket.id] =name
