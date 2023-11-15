@@ -1,10 +1,10 @@
 //const cors=require('cors')
-const socketIo=require('socket.io')
-
-const express=require('express')
-const app=express()
-
-const io = socketIo(app);
+const socketIo=require('socket.io');
+const http=require('http')
+const express=require('express');
+const app=express();
+const server = http.createServer(app);
+const io = socketIo(server);
 /*const io = require('socket.io')({
     cors: {
         origin: 'https://socketfront.vercel.app',
@@ -41,6 +41,6 @@ io.on("connection",socket=>{
 
 })
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     console.log(`Server is working on port:${5000}`)
 })
