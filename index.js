@@ -1,7 +1,7 @@
 //const cors=require('cors')
 const io = require('socket.io')({
     cors: {
-        origin: '*',
+        origin: 'https://socketfront.vercel.app',
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type'],
     },
