@@ -5,12 +5,12 @@ const express=require('express');
 const app=express();
 const server = http.createServer(app);
 const io = socketIo(server);
-const corsParams={
+/*const corsParams={
     origin: '*',
     methods: ['GET', 'POST','OPTIONS'],
     allowedHeaders: ['Content-Type'],
     withCredentials:true
-}
+}*/
     /*const io = require('socket.io')({
     cors: {
         origin: 'https://socketfront.vercel.app',
@@ -18,14 +18,14 @@ const corsParams={
         allowedHeaders: ['Content-Type'],
     },
 });*/
-app.use(cors(corsParams))
-/*app.use((req, res, next) => {
+//app.use(cors(corsParams))
+app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://socketfront.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
-});*/
+});
 const PORT=5000
 const users={}
 
